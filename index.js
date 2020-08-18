@@ -2,13 +2,16 @@ const express = require('express'),
     pug = require('pug'),
     path = require('path'),
     routes = require('./routes/routes'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 app.use(express.static(path.join(__dirname, '/public')));
+
+app.use(cookieParser('This is my passphrase'));
 
 let urlendcodedParser = bodyParser.urlencoded({
     extended: true
