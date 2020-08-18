@@ -1,0 +1,26 @@
+extends layout
+
+block content
+    form(id='form', method='post', action='/signup')
+        label(for='username') Username:
+        input(type='text', name='username')
+        br
+        label(for='password') Password:
+        input(type='password', name='password')
+        br
+        label(for='email') Email address:
+        input(type='text', name='email')
+        br
+        label(for='age') Age:
+        input(type='text', name='age')
+        br
+        label(for='answerOne') What was the name of your first pet?
+        input(type='text', name='answerOne')
+        br
+        label(for='answerTwo') What is the name of the elementary school you attended?
+        input(type='text', name='answerTwo')
+        br
+        label(for='answerThree') What is your favorite color?
+        input(type='text', name='answerThree')
+        br
+        input(type='submit', value='Signup')

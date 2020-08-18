@@ -15,3 +15,15 @@ exports.index = (req, res) => {
         title: 'Home page'
     })
 };
+
+exports.signup = (req, res) => {
+    res.render('signup', {
+        title: 'Sign up'
+    })
+}
+
+exports.signupPost = (req, res) => {
+    console.log(req.body.username);
+
+    res.redirect('/');
+}
