@@ -17,6 +17,19 @@ exports.index = (req, res) => {
     })
 };
 
+exports.profile =(req, res) => {
+
+    profile = {
+        username: "user",
+        password: "pass",
+        email: "",
+    };
+    
+    res.render('profile', {
+        title: 'Profile Page'
+    })
+}
+
 exports.signup = (req, res) => {
     res.render('signup', {
         title: 'Sign up'
