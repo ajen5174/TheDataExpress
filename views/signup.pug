@@ -14,13 +14,25 @@ block content
         label(for='age') Age:
         input(type='text', name='age')
         br
-        label(for='answerOne') What was the name of your first pet?
-        input(type='text', name='answerOne')
+        label(for='answerOne') What is your favorite animal?
+        select(name='answerOne')
+            option(value='Dog') Dog
+            option(value='Cat') Cat
+            option(value='Turtle') Turtle
+            option(value='Buffalo') Buffalo
         br
-        label(for='answerTwo') What is the name of the elementary school you attended?
-        input(type='text', name='answerTwo')
+        label(for='answerTwo') What is your favorite food?
+        select(name='answerTwo')
+            option(value='Pizza') Pizza
+            option(value='Hamburgers') Hamburgers
+            option(value='Tacos') Tacos
+            option(value='Chicken Sandwich') Chicken Sandwich
         br
         label(for='answerThree') What is your favorite color?
-        input(type='text', name='answerThree')
+        select(name='answerThree')
+            option(value='Red') Red
+            option(value='Blue') Blue
+            option(value='Yellow') Yellow
+            option(value='Green') Green
         br
         input(type='submit', value='Signup')
