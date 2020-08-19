@@ -29,7 +29,7 @@ exports.index = (req, res) => {
     })
 };
 
-exports.profile =(req, res) => {
+exports.profile = (req, res) => {
 
     profile = {
         username: "user",

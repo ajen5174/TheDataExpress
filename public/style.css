@@ -1,0 +1,45 @@
+
+body {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+#menu_container {
+    display: flex;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    flex-direction: row;
+    background-color: #cfa65f;
+    color: black;
+
+
+}
+
+.menu_item {
+    flex: 1;
+    border: 1px black;
+
+}
+
+.menu_item:hover {
+    cursor: pointer;
+    background-color: burlywood;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: larger;
+}
+
+ul {
+    display: inline-block;
+    text-align: left;
+}
+
+li {
+    margin: 10px;
+}
