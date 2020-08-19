@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
@@ -45,13 +46,23 @@ exports.profile = (req, res) => {
 exports.signup = (req, res) => {
     res.render('signup', {
         title: 'Sign up'
-    })
+    });
 }
 
 exports.signupPost = (req, res) => {
+    var pass = null
+    bcrypt.genSaltSync(10, function(err, salt){
+        if (err) return next(err);
+        bcrypt.hashSync(req.body.password, salt, null, function(err, hash){
+            if (err) return next(err);
+            pass = hash;
+            next(err);
+        })
+    });
+
     let account = new Account({
         username: req.body.username,
-        password: req.body.password,
+        password: pass,
         email: req.body.email,
         age: req.body.age,
         answerOne: req.body.answerOne,
@@ -64,5 +75,20 @@ exports.signupPost = (req, res) => {
         console.log(req.body.username + "'s account created")
     });
 
-    res.redirect('/');
+    req.session.user = {
+        isAuthenticated: true,
+        username: req.body.username
+    }
+
+    res.redirect('/profile');
+}
+
+exports.logout = (req, res) => {
+    req.session.destroy(err => {
+        if(err) {
+            console.log(err);
+        } else {
+            res.redirect('/');
+        }
+    });
 }
