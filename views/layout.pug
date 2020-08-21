@@ -3,5 +3,13 @@ html
         title=title
         link(href='/style.css', rel='stylesheet')
     body
+        header
+            nav
+                div(id='menu_container')
+                    a(class='menu_item' href='/') Home
+                    a(class='menu_item' href='/signup') Signup
+                    a(class='menu_item' href='/') Login
+                    a(class='menu_item' href='/logout') Logout
+
         h3=title
         block content
