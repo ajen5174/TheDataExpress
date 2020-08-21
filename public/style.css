@@ -1,0 +1,15 @@
+table.profileDetails {
+    border-width: 1px;
+  }
+  
+  table.profileDetails th {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+  }
+  
+  table.profileDetails td {
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
+  }

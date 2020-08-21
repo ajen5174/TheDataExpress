@@ -1,2 +1,29 @@
 extends layout
 
+block content
+  table(class='profileDetails')
+    tr
+      th Username
+      th Password
+      th Email
+      th Age
+      th Questions
+      th Answers
+      
+    tr
+      td #{profile.username}
+      td #{profile.password}
+      td #{profile.email}
+      td #{profile.age}
+      td
+      td
+      each key in profile.securityQuestions.keys()
+        tr 
+            td
+            td
+            td
+            td
+            td #{key}
+            td #{key[1]}
+  p
+    a(href='/create') Add new person

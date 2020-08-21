@@ -17,5 +17,6 @@ let urlendcodedParser = bodyParser.urlencoded({
 app.get('/', routes.index);
 app.get('/signup', routes.signup);
 app.post('/signup', urlendcodedParser, routes.signupPost);
+app.get('/profile', routes.profile);
 
 app.listen(3000);

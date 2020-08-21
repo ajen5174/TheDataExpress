@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+var Dict = require("collections/dict");
 
 mongoose.connect('mongodb://localhost/data', {useUnifiedTopology: true, useNewUrlParser: true});
 
@@ -21,11 +22,20 @@ exports.profile =(req, res) => {
     profile = {
         username: "user",
         password: "pass",
-        email: "",
+        email: "This@email.com",
+        age: 24,
+        securityQuestions:  new Dict({
+            ["What is your favorite color?"]: "red",
+            ["What is your favorite animal?"]: "buffalo",
+            ["What is your mother's maiden name?"]: "woman"
+        })
     };
+
+    console.log(typeof securityQuestions);
     
     res.render('profile', {
-        title: 'Profile Page'
+        title: 'Profile Page',
+        profile
     })
 }
 
