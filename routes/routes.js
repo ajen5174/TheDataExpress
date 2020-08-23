@@ -24,6 +24,9 @@ let accountSchema = mongoose.Schema({
 
 let Account = mongoose.model('accounts', accountSchema);
 
+let salt = bcrypt.genSaltSync(10);
+
+
 exports.index = (req, res) => {
     res.cookie('lastTimeVisited', Date.now(), {maxAge: 999999999999});
     res.render('index', {
@@ -33,19 +36,9 @@ exports.index = (req, res) => {
 
 exports.profile = (req, res) => {
 
-    profile = {
-        username: "user",
-        password: "pass",
-        email: "This@email.com",
-        age: 24,
-        securityQuestions:  new Dict({
-            ["What is your favorite color?"]: "red",
-            ["What is your favorite animal?"]: "buffalo",
-            ["What is your mother's maiden name?"]: "woman"
-        })
-    };
-
-    console.log(typeof securityQuestions);
+    Account.findOne({username: req.session.user.username}, (err, person) => {
+        console.log(person.username + " " + person.answerThree);
+    });
     
     res.render('profile', {
         title: 'Profile Page',
@@ -54,21 +47,22 @@ exports.profile = (req, res) => {
 }
 
 exports.signup = (req, res) => {
-    res.render('signup', {
-        title: 'Sign up'
-    });
+    if(req.session.user && req.session.user.isAuthenticated) {
+        res.redirect('/profile');
+    }
+    else{
+        res.render('signup', {
+            title: 'Sign up'
+        });
+    }
+    
 }
 
 exports.signupPost = (req, res) => {
-    var pass = null
-    bcrypt.genSaltSync(10, function(err, salt){
-        if (err) return next(err);
-        bcrypt.hashSync(req.body.password, salt, null, function(err, hash){
-            if (err) return next(err);
-            pass = hash;
-            next(err);
-        })
-    });
+    var pass = null;
+    let hash = bcrypt.hashSync(req.body.password, salt);
+
+    pass = hash;
 
     let account = new Account({
         username: req.body.username,
@@ -102,3 +96,33 @@ exports.logout = (req, res) => {
         }
     });
 }
+
+exports.login = (req, res) => {
+    if(req.session.user && req.session.user.isAuthenticated) {
+        console.log('logged in');
+        res.redirect('/profile');
+    } else {
+        res.render('login',  {
+            title: "Login"
+        });
+    }
+    
+};
+
+exports.loggedIn = (req, res) => {
+    Account.findOne({username: req.body.username}, (err, account) => {
+        if(bcrypt.compareSync(req.body.password, account.password))
+        {
+            console.log('login success');
+            req.session.user = {
+                isAuthenticated: true,
+                username: req.body.username
+            }
+            res.redirect('/profile');
+        }
+        else {
+            res.redirect('/');
+        }
+    });
+
+};
