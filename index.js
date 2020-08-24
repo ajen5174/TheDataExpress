@@ -38,6 +38,8 @@ app.post('/signup', urlencodedParser, routes.signupPost);
 app.get('/login', routes.login);
 app.post('/login', urlencodedParser, routes.loggedIn);
 app.get('/profile', checkAuth, routes.profile);
+app.get('/update', checkAuth, routes.update);
+app.post('/update', urlencodedParser, routes.updateInfo);
 
 app.get('/logout', routes.logout);
 

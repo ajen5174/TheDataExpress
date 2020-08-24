@@ -140,3 +140,34 @@ exports.loggedIn = (req, res) => {
     });
 
 };
+
+exports.update = (req, res) => {
+    Account.findOne({username: req.session.user.username}, (err, person) => {
+        console.log(person.username + " " + person.answerThree);
+        res.render('update', {
+            title: 'Update Page',
+            person
+        })
+    });
+};
+
+exports.updateInfo = (req, res) => {
+    console.log("update submitted");
+    Account.findOne({username: req.session.user.username}, (err, person) => {
+        person.email = req.body.email;
+        person.age = req.body.age;
+        person.answerOne = req.body.answerOne;
+        person.answerTwo = req.body.answerTwo;
+        person.answerThree = req.body.answerThree;
+        person.save((err, account) => {
+            if(err) return console.error(err);
+            console.log(req.body.username + "'s account updated")
+        });
+
+        console.log(person.username + " " + person.answerThree);
+        res.render('update', {
+            title: 'Update Page',
+            person
+        })
+    });
+};

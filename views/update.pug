@@ -1,0 +1,45 @@
+extends layout
+
+block content
+    form(id='form', method='post', action='/update')
+        <h2>Update</h2>
+        <p>Please fill in this form to update your account.</p>
+        <hr>
+        //- label(for='username') <b> Username: </b>
+        //- input(type="text" value=person.username name="username" required)
+        //- br
+        //- label(for='password') <b> Password: </b>
+        //- input(type="text" value=person.password name="password" required)
+        //- br
+        label(for='email') <b> Email address: </b>
+        input(type="text" value=person.email name="email" required)
+        br
+        label(for='age') <b> Age: </b>
+        input(type="text" value=person.age name="age" required)
+        br
+        label(for='answerOne') <b> What is your favorite animal? </b>
+        select(name='answerOne')
+            option(selected disabled hidden style='display: none')
+            option(value='Dog' selected=(person.answerOne == 'Dog')) Dog
+            option(value='Cat' selected=(person.answerOne == 'Cat')) Cat
+            option(value='Turtle' selected=(person.answerOne == 'Turtle')) Turtle
+            option(value='Buffalo' selected=(person.answerOne == 'Buffalo')) Buffalo
+        br
+        label(for='answerTwo') <b> What is your favorite food? </b>
+        select(name='answerTwo')
+            option(selected disabled hidden style='display: none')
+            option(value='Pizza' selected=(person.answerTwo == 'Pizza')) Pizza
+            option(value='Hamburgers' selected=(person.answerTwo == 'Hamburgers')) Hamburgers
+            option(value='Tacos' selected=(person.answerTwo == 'Tacos')) Tacos
+            option(value='Chicken Sandwich' selected=(person.answerTwo == 'Chicken Sandwich')) Chicken Sandwich
+        br
+        label(for='answerThree') <b> What is your favorite color? </b>
+        select(name='answerThree')
+            option(selected disabled hidden style='display: none')
+            option(value='Red' selected=(person.answerThree == 'Red')) Red
+            option(value='Blue' selected=(person.answerThree == 'Blue')) Blue
+            option(value='Yellow' selected=(person.answerThree == 'Yellow')) Yellow
+            option(value='Green' selected=(person.answerThree == 'Green')) Green
+        br
+        input(type='submit', value='Update')
+        
