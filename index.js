@@ -32,7 +32,7 @@ const checkAuth = (req, res, next) => {
     }
 }
 
-app.get('/', routes.index);
+app.get('/', routes.login);
 app.get('/signup', routes.signup);
 app.post('/signup', urlencodedParser, routes.signupPost);
 app.get('/login', routes.login);

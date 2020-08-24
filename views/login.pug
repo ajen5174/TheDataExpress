@@ -3,11 +3,11 @@ extends layout
 
 block content
     form(id='form', method='post', action='/login')
-        label(for='username') Username:
-        input(type='text', name='username')
+        label(for='username') <b> Username: </b>
+        input(type="text" placeholder="Enter Username" name="username" required)
         br
-        label(for='password') Password:
-        input(type='password', name='password')
+        label(for='password') <b> Password: </b>
+        input(type="text" placeholder="Enter Password" name="password" required)
         br
         
         input(type='submit', value='Login')
