@@ -11,20 +11,33 @@ block content
       th Answers
       
     tr
-      td #{profile.username}
-      td #{profile.password}
-      td #{profile.email}
-      td #{profile.age}
+      td #{person.username}
+      td #{person.password}
+      td #{person.email}
+      td #{person.age}
+      td
+      td 
+    tr 
       td
       td
-      each key in profile.securityQuestions.keys()
-        tr 
-            td
-            td
-            td
-            td
-            td #{key}
-            td #{key[1]}
+      td
+      td
+      td What is your favorite animal?
+      td #{person.answerOne}
+    tr 
+      td
+      td
+      td
+      td
+      td What is your favorite food?
+      td #{person.answerTwo}
+    tr 
+      td
+      td
+      td
+      td
+      td What is your favorite color?
+      td #{person.answerThree}
   p
     a(href='/create') Add new person
   

@@ -1,7 +1,6 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-var Dict = require("collections/dict");
 
 mongoose.connect('mongodb+srv://testUser:testUserPassword@cluster0.ktyj8.mongodb.net/data_express?retryWrites=true&w=majority', {useUnifiedTopology: true, useNewUrlParser: true});
 
@@ -36,14 +35,30 @@ exports.index = (req, res) => {
 
 exports.profile = (req, res) => {
 
+    // let person ={
+    //     username: "user",
+    //     password: "pass",
+    //     email: "email",
+    //     age: "age",
+    //     answerOne: "One",
+    //     answerTwo: "Two",
+    //     answerThree: "Three"
+    // };
+
     Account.findOne({username: req.session.user.username}, (err, person) => {
         console.log(person.username + " " + person.answerThree);
+        res.render('profile', {
+            title: 'Profile Page',
+            person
+        })
     });
     
-    res.render('profile', {
-        title: 'Profile Page',
-        profile
-    })
+    // res.render('profile', {
+    //     title: 'Profile Page',
+    //     person
+    // })
+
+    // res.redirect('/');
 }
 
 exports.signup = (req, res) => {
