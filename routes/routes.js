@@ -29,7 +29,7 @@ let salt = bcrypt.genSaltSync(10);
 exports.index = (req, res) => {
     res.cookie('lastTimeVisited', Date.now(), {maxAge: 999999999999});
     res.render('index', {
-        title: 'Home page'
+        title: 'Login'
     })
 };
 
@@ -50,7 +50,6 @@ exports.signup = (req, res) => {
     }
     else{
         res.render('signup', {
-            title: 'Sign up'
         });
     }
     
