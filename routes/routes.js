@@ -25,15 +25,28 @@ let Account = mongoose.model('accounts', accountSchema);
 
 let salt = bcrypt.genSaltSync(10);
 
+exports.api = (req, res) => {
+    let results = {
+        answerOne: {Dog: 0, Cat: 0, Turtle: 0, Buffalo: 0},
+        answerTwo: {Pizza: 0, Hamburgers: 0, Tacos: 0, 'Chicken Sandwich': 0},
+        answerThree: {Red: 0, Blue: 0, Yellow: 0, Green: 0}
+    }
+    Account.find((err, people) => {
+        console.log(people);
+        people.forEach((person, index) => {
+            results.answerOne[person.answerOne]++;
+            results.answerTwo[person.answerTwo]++;
+            results.answerThree[person.answerThree]++;
+        });
+        res.json(results);
+    });
 
-exports.index = (req, res) => {
-    res.cookie('lastTimeVisited', Date.now(), {maxAge: 999999999999});
-    res.render('index', {
-        title: 'Login'
-    })
+    
+
 };
 
 exports.profile = (req, res) => {
+    res.cookie('lastTimeVisited', Date.now(), {maxAge: 999999999999});
 
     Account.findOne({username: req.session.user.username}, (err, person) => {
         console.log(person.username + " " + person.answerThree);
@@ -152,3 +165,4 @@ exports.updateInfo = (req, res) => {
         res.redirect('/profile');
     });
 };
+

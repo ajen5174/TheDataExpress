@@ -24,6 +24,12 @@ app.use(expressSession({
     resave: true
 }));
 
+app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+  });
+
 const checkAuth = (req, res, next) => {
     if(req.session.user && req.session.user.isAuthenticated) {
         next();
@@ -33,6 +39,7 @@ const checkAuth = (req, res, next) => {
 }
 
 app.get('/', routes.login);
+app.get('/api', routes.api);
 app.get('/signup', routes.signup);
 app.post('/signup', urlencodedParser, routes.signupPost);
 app.get('/login', routes.login);
