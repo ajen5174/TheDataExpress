@@ -74,7 +74,7 @@ body {
     flex-direction: row;
     background-color: #8888;
     color: black;
-    padding:1%;
+    /* padding:1%; */
 }
 
 .menu_item {
@@ -133,14 +133,14 @@ input[type=submit]:hover{
     opacity: 2;
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
     padding: 15px;
     border: none;
     background: #f1f1f1;
     width:100%;
   }
-  hr {
+hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
-  }
+}
    
