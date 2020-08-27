@@ -46,13 +46,38 @@ exports.api = (req, res) => {
 };
 
 exports.profile = (req, res) => {
-    res.cookie('lastTimeVisited', Date.now(), {maxAge: 999999999999});
+
+    let current = new Date();
+    let date = current.getDate();
+    let month = current.getMonth();
+    let year = current.getFullYear();
+    let hours = current.getHours();
+    let minutes = current.getMinutes();
+    let ampm = "AM";
+
+    if(minutes < 10)
+    {
+        minutes = "0" + minutes;
+    }
+    if(hours == 0)
+    {
+        hours = 12;
+    } else if (hours == 12){
+        ampm = "PM";
+    } else if(hours > 12)
+    {
+        hours -= 12;
+        ampm = "PM";
+    }
+
+    res.cookie('lastTimeVisited', (month+1) + '/' + date + '/' + year + " at " + hours + ':' + minutes + ampm, {maxAge: 999999999999});
 
     Account.findOne({username: req.session.user.username}, (err, person) => {
         console.log(person.username + " " + person.answerThree);
         res.render('profile', {
             title: 'Profile Page',
-            person
+            person,
+            cookieInfo: req.cookies.lastTimeVisited
         })
     });
     
