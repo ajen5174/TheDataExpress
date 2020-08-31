@@ -1,17 +1,24 @@
 table.profileDetails {
     border-width: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2%;
+    background-color: #fff;
+    margin: 5% auto 15% auto; 
+    border: 9px solid #888;
+    width: 80%;
+    margin-bottom:5%;
   }
   
 table.profileDetails th {
-  border-width: 1px;
-  padding: 8px;
-  border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
 }
 
 table.profileDetails td {
-  border-width: 1px;
-  padding: 8px;
-  border-style: solid;
+    border-width: 1px;
+    padding: 8px;
+    border-style: solid;
 }
 
 body {
@@ -28,14 +35,11 @@ body {
     flex-direction: row;
     background-color: #cfa65f;
     color: black;
-
-
 }
 
 .menu_item {
     flex: 1;
     border: 1px black;
-
 }
 
 .menu_item:hover {
@@ -74,7 +78,6 @@ body {
     flex-direction: row;
     background-color: #8888;
     color: black;
-    /* padding:1%; */
 }
 
 .menu_item {
@@ -100,21 +103,21 @@ ul {
 }
 
 input {
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1; 
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1; 
 }
 
 form {
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 2%;
-  background-color: #fff;
-  margin: 5% auto 15% auto; 
-  border: 9px solid #888;
-  width: 80%;
-  margin-bottom:5%;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2%;
+    background-color: #fff;
+    margin: 5% auto 15% auto; 
+    border: 9px solid #888;
+    width: 80%;
+    margin-bottom:5%;
 }
 
 input[type=submit]{
@@ -139,8 +142,24 @@ input[type=text], input[type=password] {
     background: #f1f1f1;
     width:100%;
   }
+
 hr {
     border: 1px solid #f1f1f1;
     margin-bottom: 25px;
 }
    
+img {
+    width: 60%;
+    height: 30%;
+}
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    background-color:white;
+    margin: 3% auto 0% auto; 
+    border: 9px solid #888;
+    font-size:larger;
+}

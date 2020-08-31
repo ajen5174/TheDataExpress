@@ -1,48 +1,21 @@
 extends layout
 
 block content
-  table(class='profileDetails')
-    tr
-      th Username
-      th Password
-      th Email
-      th Age
-      th Questions
-      th Answers
-      
-    tr
-      td #{person.username}
-      td #{person.password}
-      td #{person.email}
-      td #{person.age}
-      td
-      td 
-    tr 
-      td
-      td
-      td
-      td
-      td What is your favorite animal?
-      td #{person.answerOne}
-    tr 
-      td
-      td
-      td
-      td
-      td What is your favorite food?
-      td #{person.answerTwo}
-    tr 
-      td
-      td
-      td
-      td
-      td What is your favorite color?
-      td #{person.answerThree}
+  <div class="card">
+    <h3> Profile Page </h3>
+    <img src="avatars.gif">
+    <p><b> Age: </b> #{person.age} </p>
+    <p><b> Username: </b> #{person.username} </p>
+    <p><b> Favorite animal: </b> #{person.answerOne} </p>
+    <p><b> Favorite food: </b>#{person.answerTwo} </p>
+    <p><b> Favorite color: </b> #{person.answerThree} </p>
+    <p><b> Email: </b> #{person.email} </p>
+  </div>
 
   div
     p You last visited this page on #{cookieInfo}
   p
-    a(href='/update') Edit This Info
+   a(href='/update') Edit This Info
   
-  div
+  p
     a(href='/logout') Logout

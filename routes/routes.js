@@ -75,7 +75,6 @@ exports.profile = (req, res) => {
     Account.findOne({username: req.session.user.username}, (err, person) => {
         console.log(person.username + " " + person.answerThree);
         res.render('profile', {
-            title: 'Profile Page',
             person,
             cookieInfo: req.cookies.lastTimeVisited
         })
