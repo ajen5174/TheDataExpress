@@ -138,7 +138,6 @@ exports.login = (req, res) => {
         res.redirect('/profile');
     } else {
         res.render('login',  {
-            title: "Login"
         });
     }
     
@@ -193,7 +192,6 @@ exports.updateInfo = (req, res) => {
 
 exports.home = (req, res) => {
     res.render('index', {
-        title: 'Home Page' 
     });
 };
 
